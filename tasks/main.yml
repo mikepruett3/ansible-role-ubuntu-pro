@@ -13,10 +13,12 @@
 
 - name: "Set fact for Ubuntu Pro subscription state"
   ansible.builtin.set_fact:
-    registered: "{{ result.stdout }}"
+    registered: true
+  when:
+    - register.rc == 0
 
 - name: "Register host with Ubuntu Pro subscription"
   ansible.builtin.shell:
     cmd: sudo pro attach {{ ubuntu_token }}
   when:
-    - registered != "true"
+    - not registered | bool
