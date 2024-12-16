@@ -15,7 +15,7 @@
   ansible.builtin.set_fact:
     registered: true
   when:
-    - register.rc == 0
+    - result.rc == 0
 
 - name: "Register host with Ubuntu Pro subscription"
   ansible.builtin.shell:
