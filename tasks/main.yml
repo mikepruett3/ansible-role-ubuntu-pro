@@ -15,5 +15,8 @@
   ansible.builtin.set_fact:
     registered: "{{ result.stdout }}"
 
-- debug:
-    var: registered
+- name: "Register host with Ubuntu Pro subscription"
+  ansible.builtin.shell:
+    cmd: sudo pro attach {{ ubuntu_token }}
+  when:
+    - npt registered | bool
