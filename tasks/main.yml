@@ -19,4 +19,4 @@
   ansible.builtin.shell:
     cmd: sudo pro attach {{ ubuntu_token }}
   when:
-    - registered != 'true'
+    - registered != "true"
